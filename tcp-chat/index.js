@@ -20,16 +20,11 @@ var server = net.createServer(function (conn) {
                 nickname = data;
                 users[nickname] = conn;
 
-                for (var i in users) {
-                    broadcast('\033[90m > ' + nickname + ' joined the room\033[39m\n');
-                }
+                broadcast('\033[90m > ' + nickname + ' joined the room\033[39m\n', true);
             }
         } else {
-            for (var i in users) {
-                if (i != nickname) {
-                    broadcast('\033[96m > ' + nickname + ':\033[39m ' + data + '\n', true);
-                }
-            }
+            broadcast('\033[96m > ' + nickname + ':\033[39m ' + data + '\n', true);
+
         }
     });
     conn.on('close', function () {
