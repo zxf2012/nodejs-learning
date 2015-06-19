@@ -5,8 +5,3 @@ var serv = http.createServer(function (req, res) {
     //throw new Error('错误不会被捕获')
 });
 serv.listen(3000);
-
-process.on('uncatchException', function (err) {
-    console.error(err);
-    process.exit(1);
-});
