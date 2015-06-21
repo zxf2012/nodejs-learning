@@ -19,7 +19,6 @@ var server = net.createServer(function (conn) {
             } else {
                 nickname = data;
                 users[nickname] = conn;
-
                 broadcast('\033[90m > ' + nickname + ' joined the room\033[39m\n', true);
             }
         } else {
