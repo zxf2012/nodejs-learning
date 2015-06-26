@@ -1,3 +1,6 @@
 #chat {display:none;}
 li {padding:0 30px 0 0; line-height: 20px;}
 .confirmed::after {position:absolute; width:20px; height:20px; content: ""; background:url("right.jpg") no-repeat; background-size: 100% 100%;}
+
+#results a{display:none;}
+form.isDJ #results a{display:inline;}

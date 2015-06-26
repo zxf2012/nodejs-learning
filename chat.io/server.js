@@ -14,7 +14,7 @@ var io = sio.listen(app),
 
 function elect(socket) {
     dj = socket;
-    io.sickets.emit('announcement', socket.nickname + ' is the new dj');
+    io.sockets.emit('announcement', socket.nickname + ' is the new dj');
     socket.emit('elected');
     socket.dj = true;
     socket.on('disconnect', function () {
@@ -41,9 +41,18 @@ io.sockets.on('connection', function (socket) {
         fn(Date.now());
     });
 
-    socket.on('search', function () {
-
+    socket.on('search', function (q, fn) {
+        request('https://api.douban.com/v2/music/search?q=' + encodeURIComponent(q), function (res) {
+            if (200 == res.status) fn(JSON.parse(res.text));
+        })
     });
+
+    socket.on('song', function () {
+        if (socket.dj) {
+            currentSong = song;
+            socket.boradcast.emit('song', song);
+        }
+    })
 });
 
 
