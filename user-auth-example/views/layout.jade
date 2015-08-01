@@ -1,0 +1,16 @@
+doctype 5
+html
+	head
+		title MongoDB example
+	body
+		h1 My first MongoDB app
+		hr
+		block content
+		if (authenticated)
+			p Welcome back, #{me.first}
+			a(href="/logout") Logout
+		else
+			p Welcome new Visitor
+			ul
+				li: a(href="/login") Login layout
+				li: a(href="/signup") Signup layout
