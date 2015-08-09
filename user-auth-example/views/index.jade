@@ -1,3 +1,5 @@
 include head
+if (authenticated)
+    p Welcome back, #{me.name}
+    a(href='/logout') Logout
 include footer
-		

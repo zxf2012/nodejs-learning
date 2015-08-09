@@ -1,10 +1,12 @@
 include head
+if (signupEmail)
+	p Congratulations on sign up! Please login below
 form(action="/login", method="POST")
 	fieldset
 		legend Log in
 		p
 			label Email
-			input(name="user[email]", type="text")
+			input(name="user[email]", type="text", value=signupEmail)
 		p
 			label Password
 			input(name="user[password]", type="password")
